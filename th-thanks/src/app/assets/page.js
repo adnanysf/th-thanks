@@ -16,14 +16,14 @@ export default function Home(){
         setUserName(loggedInUser);
 
         if (loggedInUser) {
-            fetch(`https://th-thanks.vercel.app/${loggedInUser}`)
+            fetch(`https://th-thanks.vercel.app/user/getinfo/${loggedInUser}`)
                 .then(response => response.json())
                 .then(data => {
                     setThankCount(data.postCount);
                 })
                 .catch(error => console.error(error)).then(() => {
 
-            fetch(`https://th-thanks.vercel.app/${loggedInUser}/getuser`)
+            fetch(`https://th-thanks.vercel.app/user/${loggedInUser}/getuser`)
                 .then(response => response.json())
                 .then(data => {
                     setRandomUser(data.name);
