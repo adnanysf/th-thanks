@@ -21,13 +21,14 @@ export default function Home(){
                 .then(data => {
                     setThankCount(data.postCount);
                 })
-                .catch(error => console.error(error));
-
-            fetch(`https://th-thanks.vercel.app/user/${loggedInUser}/getuser`)
+                .catch(error => console.error(error)).then(() => {
+                    
+            fetch(`http://th-thanks.vercel.app/user/${loggedInUser}/getuser`)
                 .then(response => response.json())
                 .then(data => {
                     setRandomUser(data.name);
                 });
+            });
         }
     }, []);
 

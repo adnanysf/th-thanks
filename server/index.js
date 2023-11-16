@@ -80,10 +80,15 @@ app.get('/user/:username/getuser', async (req, res) => {
         }));
         const minCount = Math.min(...thanksCounts.map(user => user.count));
         const usersWithMinCount = thanksCounts.filter(user => user.count === minCount);
-        //console.log(usersWithMinCount);
+        // console.log(usersWithMinCount);
         const randomUser = usersWithMinCount[Math.floor(Math.random() * usersWithMinCount.length)];
-        console.log(randomUser)
-        res.send(randomUser);
+        // console.log(randomUser)
+        let userToSend;
+        userToSend = {
+            name: randomUser.name,
+            thankCount: randomUser.count
+        }
+        res.send(userToSend);
     } catch (error) {
         console.error(error);
         res.status(500).send({ message: 'Server error' });
