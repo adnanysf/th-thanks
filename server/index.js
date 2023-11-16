@@ -82,6 +82,7 @@ app.get('/user/:username/getuser', async (req, res) => {
         const usersWithMinCount = thanksCounts.filter(user => user.count === minCount);
         //console.log(usersWithMinCount);
         const randomUser = usersWithMinCount[Math.floor(Math.random() * usersWithMinCount.length)];
+        console.log(randomUser)
         res.send(randomUser);
     } catch (error) {
         console.error(error);
