@@ -50,6 +50,9 @@ app.put('/user/:username/:name', async (req, res) => {
             user.postCount += 1;
             await user.save();
         }
+        if (index === -1) {
+            return res.status(404).send({ message: 'User not in usersLeft array' });
+        }
 
         thank.messages.push(message);
         thank.thankCount += 1;
@@ -64,16 +67,20 @@ app.put('/user/:username/:name', async (req, res) => {
 });
 
 app.get('/user/:username/getuser', async (req, res) => {
+    const username = req.params.username;
     try {
-        const username = req.params.username;
         const user = await User.findOne({ name: username });
-        const leastThankCount = await User.find({ name: { $in: user.usersLeft } }).sort({ thankCount: 1 }).limit(1).then(users => users[0].thankCount);
-        const usersWithLeastThankCount = await User.find({ name: { $in: user.usersLeft }, thankCount: leastThankCount });
-        const randomUser = usersWithLeastThankCount[Math.floor(Math.random() * usersWithLeastThankCount.length)];
-
-        if (!randomUser) {
+        if(!user){
             return res.status(404).send({ message: 'User not found' });
         }
+        const usersLeft = user.usersLeft;
+        const thanksCounts = await Promise.all(usersLeft.map(async (username) => {
+            const thanks = await Thank.findOne({ name: username });
+            return { name: username, count: thanks ? thanks.thankCount : Infinity };
+        }));
+        const minCount = Math.min(...thanksCounts.map(user => user.count));
+        const usersWithMinCount = thanksCounts.filter(user => user.count === minCount);
+        const randomUser = usersWithMinCount[Math.floor(Math.random() * usersWithMinCount.length)];
         res.send(randomUser);
     } catch (error) {
         console.error(error);

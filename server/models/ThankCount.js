@@ -14,6 +14,6 @@ const ThankSchema = new mongoose.Schema({
   }
 });
 
-const Thank = mongoose.model('Thank', ThankSchema);
+const Thanks = mongoose.model('Thanks', ThankSchema);
 
-module.exports = Thank;
+module.exports = Thanks;

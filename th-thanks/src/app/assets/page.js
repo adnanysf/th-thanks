@@ -9,7 +9,7 @@ export default function Home(){
     const [thankCount, setThankCount] = useState(0);
     const [randomUser, setRandomUser] = useState('');
     const [message, setMessage] = useState('');
-
+// https://th-thanks.vercel.app/
     useEffect(() => {
         const isBrowser = typeof window !== 'undefined';
         const loggedInUser = isBrowser ? localStorage.getItem('loggedInUser') : '';
