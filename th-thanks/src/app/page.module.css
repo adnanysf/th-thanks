@@ -1,4 +1,4 @@
-@media only screen and (min-width: 390px){
+@media only screen and (max-width: 450px){
 .app{
     display: flex;
     flex-direction: column;
@@ -41,7 +41,6 @@
     width: 90%;
     margin: 10%;
     border-radius: 10px;
-
     
 }
 
@@ -63,7 +62,7 @@
 }
 
 
-@media only screen and (min-width: 391px){
+@media only screen and (min-width: 451px){
     .app{
         display: flex;
         flex-direction: column;
@@ -107,8 +106,10 @@
         margin: 10%;
         border-radius: 10px;
     
+
         
     }
+    
     
     .inputField{
         width: 100%;
