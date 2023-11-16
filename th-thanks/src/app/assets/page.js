@@ -9,21 +9,21 @@ export default function Home(){
     const [thankCount, setThankCount] = useState(0);
     const [randomUser, setRandomUser] = useState('');
     const [message, setMessage] = useState('');
-// https://th-thanks-backend-a80h7y8wg-adnans-projects-c429a957.vercel.app/
+// https://th-thanks-backend-a80h7y8wg-adnans-projects-c429a957.vercel.app/  https://th-thanks.vercel.app/
     useEffect(() => {
         const isBrowser = typeof window !== 'undefined';
         const loggedInUser = isBrowser ? localStorage.getItem('loggedInUser') : '';
         setUserName(loggedInUser);
 
         if (loggedInUser) {
-            fetch(`https://th-thanks-backend-a80h7y8wg-adnans-projects-c429a957.vercel.app/${loggedInUser}`)
+            fetch(`https://th-thanks.vercel.app/${loggedInUser}`)
                 .then(response => response.json())
                 .then(data => {
                     setThankCount(data.postCount);
                 })
                 .catch(error => console.error(error)).then(() => {
 
-            fetch(`https://th-thanks-backend-a80h7y8wg-adnans-projects-c429a957.vercel.app/user/${loggedInUser}/getuser`)
+            fetch(`https://th-thanks.vercel.app/${loggedInUser}/getuser`)
                 .then(response => response.json())
                 .then(data => {
                     setRandomUser(data.name);
@@ -33,7 +33,7 @@ export default function Home(){
     }, []);
 
     function submitThanks(){
-        fetch(`https://th-thanks-backend-a80h7y8wg-adnans-projects-c429a957.vercel.app/user/${userName}/${randomUser}`, {
+        fetch(`https://th-thanks.vercel.app/${userName}/${randomUser}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export default function Home(){
             setMessage('');
         })
         .then(() => {
-            return fetch(`https://th-thanks-backend-a80h7y8wg-adnans-projects-c429a957.vercel.app/user/${userName}/getuser`);
+            return fetch(`https://th-thanks.vercel.app/${userName}/getuser`);
         })
         .then(response => response.json())
         .then(data => {
