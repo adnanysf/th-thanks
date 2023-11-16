@@ -76,10 +76,11 @@ app.get('/user/:username/getuser', async (req, res) => {
         const usersLeft = user.usersLeft;
         const thanksCounts = await Promise.all(usersLeft.map(async (username) => {
             const thanks = await Thank.findOne({ name: username });
-            return { name: username, count: thanks ? thanks.thankCount : Infinity };
+            return { name: username, count: thanks ? thanks.thankCount : 0 };
         }));
         const minCount = Math.min(...thanksCounts.map(user => user.count));
         const usersWithMinCount = thanksCounts.filter(user => user.count === minCount);
+        //console.log(usersWithMinCount);
         const randomUser = usersWithMinCount[Math.floor(Math.random() * usersWithMinCount.length)];
         res.send(randomUser);
     } catch (error) {
