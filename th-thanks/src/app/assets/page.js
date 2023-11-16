@@ -16,14 +16,14 @@ export default function Home(){
         setUserName(loggedInUser);
 
         if (loggedInUser) {
-            fetch(`http://localhost:4000/user/getinfo/${loggedInUser}`)
+            fetch(`https://th-thanks.vercel.app/user/getinfo/${loggedInUser}`)
                 .then(response => response.json())
                 .then(data => {
                     setThankCount(data.postCount);
                 })
                 .catch(error => console.error(error));
 
-            fetch(`http://localhost:4000/user/${loggedInUser}/getuser`)
+            fetch(`https://th-thanks.vercel.app/user/${loggedInUser}/getuser`)
                 .then(response => response.json())
                 .then(data => {
                     setRandomUser(data.name);
@@ -32,7 +32,7 @@ export default function Home(){
     }, []);
 
     function submitThanks(){
-        fetch(`http://localhost:4000/user/${userName}/${randomUser}`, {
+        fetch(`https://th-thanks.vercel.app/user/${userName}/${randomUser}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ export default function Home(){
             setMessage('');
         })
         .then(() => {
-            return fetch(`http://localhost:4000/user/${userName}/getuser`);
+            return fetch(`https://th-thanks.vercel.app/user/${userName}/getuser`);
         })
         .then(response => response.json())
         .then(data => {
