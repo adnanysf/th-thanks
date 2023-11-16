@@ -83,12 +83,8 @@ app.get('/user/:username/getuser', async (req, res) => {
         // console.log(usersWithMinCount);
         const randomUser = usersWithMinCount[Math.floor(Math.random() * usersWithMinCount.length)];
         // console.log(randomUser)
-        let userToSend;
-        userToSend = {
-            name: randomUser.name,
-            thankCount: randomUser.count
-        }
-        res.send(userToSend);
+    
+        res.send(randomUser.name);
     } catch (error) {
         console.error(error);
         res.status(500).send({ message: 'Server error' });
