@@ -33,7 +33,7 @@ export default function Home(){
     }, []);
 
     function submitThanks(){
-        fetch(`https://th-thanks.vercel.app/${userName}/${randomUser}`, {
+        fetch(`https://th-thanks.vercel.app/user/${userName}/${randomUser}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export default function Home(){
             setMessage('');
         })
         .then(() => {
-            return fetch(`https://th-thanks.vercel.app/${userName}/getuser`);
+            return fetch(`https://th-thanks.vercel.app/user/${userName}/getuser`);
         })
         .then(response => response.json())
         .then(data => {
