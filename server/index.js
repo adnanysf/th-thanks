@@ -83,10 +83,13 @@ app.get('/user/:username/getuser', async (req, res) => {
         // console.log(usersWithMinCount);
         const randomUser = usersWithMinCount[Math.floor(Math.random() * usersWithMinCount.length)];
 <<<<<<< HEAD
+<<<<<<< HEAD
         // console.log(randomUser)
     
         res.send(randomUser.name);
 =======
+=======
+>>>>>>> parent of 2fb1a75 (testing indexfile)
         res.send(randomUser);
 >>>>>>> parent of 2fb1a75 (testing indexfile)
     } catch (error) {
