@@ -90,6 +90,7 @@ app.get('/user/getinfo/:username', async (req, res) => {
         }
         res.send(user);
         
+        
     } catch (error) {
         console.error(error);
         res.status(500).send({ message: 'Server error' });
