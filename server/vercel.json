@@ -11,17 +11,5 @@
         "src": "/(.*)",
         "dest": "/"
       }
-    ],
-    "functions": {
-        "api/user/getinfo/:username": {
-          "runtime": "nodejs14",
-          "maxDuration": 10,
-          "regions": ["all"]
-        },
-        "api/user/:username/:randomUser": {
-          "runtime": "nodejs14",
-          "maxDuration": 10,
-          "regions": ["all"]
-        }
-      }
+    ]
 }
