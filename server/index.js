@@ -82,16 +82,9 @@ app.get('/user/:username/getuser', async (req, res) => {
         const usersWithMinCount = thanksCounts.filter(user => user.count === minCount);
         // console.log(usersWithMinCount);
         const randomUser = usersWithMinCount[Math.floor(Math.random() * usersWithMinCount.length)];
-<<<<<<< HEAD
-<<<<<<< HEAD
         // console.log(randomUser)
     
-        res.send(randomUser.name);
-=======
-=======
->>>>>>> parent of 2fb1a75 (testing indexfile)
         res.send(randomUser);
->>>>>>> parent of 2fb1a75 (testing indexfile)
     } catch (error) {
         console.error(error);
         res.status(500).send({ message: 'Server error' });
