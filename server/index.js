@@ -69,7 +69,7 @@ app.put('/user/:username/:name', async (req, res) => {
 app.get('/user/:username/getuser', async (req, res) => {
     const username = req.params.username;
     try {
-        const user = await User.findOne({ name: username });
+        const user = await User.findOne({ name: username }).select('name usersLeft');
         if(!user){
             return res.status(404).send({ message: 'User not found' });
         }
