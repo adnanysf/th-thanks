@@ -20,7 +20,6 @@ export default function Home(){
                 .then(response => response.json())
                 .then(data => {
                     setThankCount(data.postCount);
-                    // console.log(data);
                 })
                 .catch(error => console.error(error));
 
@@ -40,20 +39,19 @@ export default function Home(){
             },
             body: JSON.stringify({ message: message })
         })
-            .then(response => response.json())
-            .then(data => {
-                setThankCount(data.postCount);
-            })
-            .catch(error => console.error(error))
-            .finally(() => {
-                setMessage('');
-            });
-
-        fetch(`http://localhost:4000/user/${userName}/getuser`)
-            .then(response => response.json())
-            .then(data => {
-                setRandomUser(data.name);
-            });
+        .then(response => response.json())
+        .then(data => {
+            setThankCount(data.postCount);
+            setMessage('');
+        })
+        .then(() => {
+            return fetch(`http://localhost:4000/user/${userName}/getuser`);
+        })
+        .then(response => response.json())
+        .then(data => {
+            setRandomUser(data.name);
+        })
+        .catch(error => console.error(error));
     }
 
     
@@ -63,7 +61,7 @@ export default function Home(){
 
         <div className={styles.content}>
             <h1 className={styles.title}>hello {userName}, you gave {thankCount} thanks! Give thanks to {randomUser}</h1>
-            <textarea className={styles.inputField} onChange={event => setMessage(event.target.value)} />
+            <textarea className={styles.inputField} value={message} onChange={event => setMessage(event.target.value)} placeholder='Write a nice long message to your pookie' />
             <div className={styles.buttonContainer}>
                 <div className={styles.buttons} onClick={submitThanks}><p>Next</p></div>
             </div>

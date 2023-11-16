@@ -3,3 +3,11 @@ PUT http://localhost:4000/user/Adnan/Ayo
 GET http://localhost:4000/user/Adnan/getuser
 ###
 GET http://localhost:4000/user/getinfo/Adnan
+###
+GET http://localhost:4000/user/Adnan/Anjali
+Content-Type: application/json
+
+{
+    "message" : "test to see if this works with multiple",
+
+}
