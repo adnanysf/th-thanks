@@ -27,6 +27,10 @@ app.listen(PORT, (error) =>{
     }
 );
 
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
 app.put('/user/:username/:name', async (req, res) => {
     const username = req.params.username;
     const name = req.params.name;
