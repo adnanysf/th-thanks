@@ -11,7 +11,7 @@ export default function Home(){
     const [selectedName, setSelectedName] = useState('Ekdev');
     const names = ['Ekdev', 'Abhishek', 'Li', 'Ayo', 'Anish','Kirthi','Ashrita','Jaden'
                     ,'Malavi','Arya','Jiyoon','Mateo','Anjali','Keegan','Big Harsh','Naveen',
-                    'Gabe','Nafi','Lizzy','Joshua','Adnan','Austin','Rita','Adam','Lil Harsh','Nico'
+                    'Gabe','Nafi','Lizzy','Joshua','Adnan','Austin','Rita','Adam','Lil Harsh','Nico','Kat'
 
 ];
     const handleNameChange = (event) => {

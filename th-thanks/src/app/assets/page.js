@@ -64,7 +64,7 @@ export default function Home(){
             <h1 className={styles.title}>howdy {userName}, you gave {thankCount} thanks! Give thanks to {randomUser}</h1>
             <textarea className={styles.inputField} value={message} onChange={event => setMessage(event.target.value)} placeholder='Write a nice long message to your pookie' />
             <div className={styles.buttonContainer}>
-                <button className={styles.buttons} onClick={submitThanks} disabled={thankCount === 25 || message === ''}> <p>Next</p></button>
+                <button className={styles.buttons} onClick={submitThanks} disabled={thankCount === 26 || message === ''}> <p>Next</p></button>
             </div>
 
         </div>
