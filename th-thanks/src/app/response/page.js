@@ -5,7 +5,7 @@ import styles from './page.module.css'
 export default function Response(){
     const [messages, setMessages] = useState([]);
     useEffect(() => {
-        fetch('http://th-thanks.vercel.app/user/getallthanks')
+        fetch('https://th-thanks.vercel.app/user/getallthanks')
             .then(response => response.json())
             .then(data => {
                 const messageObject = data.map(user => ({
