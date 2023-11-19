@@ -106,3 +106,15 @@ app.get('/user/getinfo/:username', async (req, res) => {
         res.status(500).send({ message: 'Server error' });
     }
 });
+
+
+app.get('/user/getallthanks', async (req, res) => {
+    try {
+        const thanks = await Thank.find({});
+        res.send(thanks);
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Server error' });
+    }
+});
