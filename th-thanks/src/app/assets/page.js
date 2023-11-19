@@ -55,13 +55,17 @@ export default function Home(){
         .catch(error => console.error(error));
     }
 
-    
+
     return( 
     <div className={styles.app}>
             <img src='/turkeygif.gif' alt="turkey gif" className={styles.gif} />
 
         <div className={styles.content}>
-            <h1 className={styles.title}>howdy {userName}, you gave {thankCount} thanks! Give thanks to {randomUser}</h1>
+            <h1 className={styles.title}>
+            {thankCount === 26 
+            ? `Congratulations ${userName}, you've given all your thanks!`
+            : `howdy ${userName}, you gave ${thankCount} thanks! Give thanks to ${randomUser}`}
+            </h1>
             <textarea className={styles.inputField} value={message} onChange={event => setMessage(event.target.value)} placeholder='Write a nice long message to your pookie' />
             <div className={styles.buttonContainer}>
                 <button className={styles.buttons} onClick={submitThanks} disabled={thankCount === 26 || message === ''}> <p>Next</p></button>
